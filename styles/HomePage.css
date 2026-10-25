@@ -1,0 +1,158 @@
+.home-page {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 1100px;
+}
+
+.welcome-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+}
+
+.welcome-text {
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 0.25rem;
+}
+
+.section-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 1rem;
+}
+
+.welcome-card .section-title {
+  color: #111827;
+}
+
+/* Tarjeta del próximo vuelo */
+.flight-card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background-color: var(--color-lavender);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+}
+
+.flight-info {
+  flex: 1;
+}
+
+.flight-route {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.flight-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem 2rem;
+  font-size: 13px;
+  color: #374151;
+}
+
+.flight-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.flight-price {
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.status-badge {
+  background-color: #22c55e;
+  color: #064e24;
+  font-weight: 600;
+  font-size: 12px;
+  padding: 3px 16px;
+  border-radius: 8px;
+}
+
+/* Imagen de destino (con fondo de respaldo si no existe el archivo) */
+.trip-image {
+  width: 170px;
+  height: 140px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1181cb, #043b60);
+}
+
+.trip-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.trip-image-placeholder {
+  font-size: 36px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Podría interesarte */
+.suggestions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 1.5rem;
+}
+
+.suggestion-card {
+  display: flex;
+  gap: 1rem;
+  background-color: var(--color-lavender);
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.suggestion-card .trip-image {
+  width: 150px;
+  height: 150px;
+}
+
+.suggestion-title {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.suggestion-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  list-style: none;
+  font-size: 12px;
+  color: #374151;
+}
+
+@media (max-width: 900px) {
+  .flight-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .flight-details {
+    grid-template-columns: 1fr;
+  }
+  .flight-side {
+    align-items: flex-start;
+  }
+  .flight-card .trip-image {
+    width: 100%;
+  }
+  .suggestions-grid {
+    grid-template-columns: 1fr;
+  }
+}

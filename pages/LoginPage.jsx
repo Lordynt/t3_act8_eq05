@@ -7,7 +7,7 @@ export default function LoginPage({ onLoginSuccess }) {
       {/* Lado izquierdo: Imagen del avión */}
       <div className="login-image-side">
         <img 
-          src="/default_header_2.png" 
+          src={`${import.meta.env.BASE_URL}default_header_2.png`} 
           alt="Avión volando sobre la ciudad al atardecer" 
         />
       </div>

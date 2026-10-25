@@ -1,0 +1,95 @@
+.navbar {
+  height: var(--navbar-height);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  background-color: var(--color-navy);
+  color: #fff;
+}
+
+/* El bloque del logo mide lo mismo que el sidebar para que queden alineados */
+.navbar-brand {
+  width: var(--sidebar-width);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0 1.25rem;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.navbar-title {
+  flex: 1;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.navbar-user {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-right: 1.5rem;
+}
+
+.navbar-user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  line-height: 1.25;
+}
+
+.navbar-name {
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.navbar-email {
+  font-size: 11px;
+  opacity: 0.75;
+}
+
+.navbar-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #cbd5e1;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+}
+
+.navbar-logout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.navbar-logout:hover {
+  background-color: var(--color-orange);
+  border-color: var(--color-orange);
+}
+
+@media (max-width: 768px) {
+  .navbar-brand {
+    justify-content: center;
+    padding: 0;
+  }
+  .navbar-brand span,
+  .navbar-user-info {
+    display: none;
+  }
+  .navbar-title {
+    padding-left: 1rem;
+  }
+  .navbar-user {
+    padding-right: 1rem;
+  }
+}
