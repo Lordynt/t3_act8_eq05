@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Pagination from '../components/Pagination';
 import UserModal from '../components/UserModal'; 
-import { SearchIcon } from '../components/Icons';
+import { SearchIcon, FilterIcon } from '../components/Icons';
 import useProductsQuery, { LIMIT_OPTIONS } from '../hooks/useProductsQuery';
 import { getUsers, createUser, updateUser, deleteUser } from '../services/productService'; 
 import '../styles/ProductsPage.css';
@@ -16,6 +16,7 @@ export default function ProductsPage() {
   const [reloadCount, setReloadCount] = useState(0);
 
   const [searchText, setSearchText] = useState(query.search);
+  const [showFilters, setShowFilters] = useState(Boolean(query.category));
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [userToEdit, setUserToEdit] = useState(null);
@@ -33,6 +34,7 @@ export default function ProductsPage() {
           limit: query.limit,
           skip: (query.page - 1) * query.limit,
           search: query.search,
+          role: query.category,
         });
         if (!isCancelled) {
           setUsers(data.users);
@@ -47,7 +49,7 @@ export default function ProductsPage() {
 
     loadUsers();
     return () => { isCancelled = true; };
-  }, [query.page, query.limit, query.search, reloadCount]);
+  }, [query.page, query.limit, query.search, query.category, reloadCount]);
 
   useEffect(() => {
     setSearchText(query.search);
@@ -181,6 +183,28 @@ export default function ProductsPage() {
             onChange={(e) => setSearchText(e.target.value)}
           />
         </div>
+
+        <button
+          type="button"
+          className={`filter-btn ${showFilters ? 'active' : ''}`}
+          onClick={() => setShowFilters(!showFilters)}
+          title="Filtrar por rol"
+        >
+          <FilterIcon size={18} />
+        </button>
+
+        {showFilters && (
+          <select
+            className="category-select"
+            value={query.category}
+            onChange={(e) => updateQuery({ category: e.target.value, page: 1 })}
+          >
+            <option value="">Todos los roles</option>
+            <option value="admin">Administrador</option>
+            <option value="moderator">Moderador</option>
+            <option value="user">Usuario</option>
+          </select>
+        )}
       </div>
 
       {renderTable()}
