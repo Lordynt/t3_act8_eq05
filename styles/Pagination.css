@@ -20,7 +20,6 @@
   background-color: #f1f5f9;
 }
 
-/* Página actual en naranja */
 .pagination-btn.active {
   background-color: #f59e42;
   border-color: #f59e42;

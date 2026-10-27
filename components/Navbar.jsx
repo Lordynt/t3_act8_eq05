@@ -1,7 +1,9 @@
-import { MonitorIcon, LogoutIcon } from './Icons';
+import { MonitorIcon } from './Icons';
 import '../styles/Navbar.css';
 
-export default function Navbar({ title, user, onLogout }) {
+export default function Navbar({ title, user }) {
+  const avatarUrl = `https://ui-avatars.com/api/?name=${user.firstName}+${user.lastName}&background=0088FF&color=fff&bold=true&size=128`;
+
   return (
     <header className="navbar">
       <div className="navbar-brand">
@@ -16,20 +18,15 @@ export default function Navbar({ title, user, onLogout }) {
           <span className="navbar-name">{user.firstName} {user.lastName}</span>
           <span className="navbar-email">{user.email}</span>
         </div>
+        
         <img
-          src={user.image}
-          alt={`Foto de perfil de ${user.username}`}
+          src={avatarUrl}
+          alt={`Avatar de ${user.firstName}`}
           className="navbar-avatar"
+          onError={(e) => {
+            e.target.style.display = 'none';
+          }}
         />
-        <button
-          type="button"
-          className="navbar-logout"
-          onClick={onLogout}
-          title="Cerrar sesión"
-          aria-label="Cerrar sesión"
-        >
-          <LogoutIcon size={18} />
-        </button>
       </div>
     </header>
   );

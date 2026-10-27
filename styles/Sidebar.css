@@ -32,12 +32,10 @@
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Opción activa: fondo naranja de lado a lado */
 .sidebar-item.active {
   background-color: var(--color-orange);
 }
 
-/* Botón "Cerrar sesión" pegado abajo, como en el mockup */
 .sidebar-logout {
   display: flex;
   align-items: center;

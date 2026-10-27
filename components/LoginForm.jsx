@@ -12,7 +12,6 @@ export default function LoginForm({ onLoginSuccess }) {
     e.preventDefault();
     setError('');
 
-    // Validaciones de campos vacíos
     if (!username.trim() || !password.trim()) {
       setError('Por favor, completa todos los campos.');
       return;
@@ -22,7 +21,6 @@ export default function LoginForm({ onLoginSuccess }) {
 
     try {
       const userData = await loginUser(username, password);
-      // Si el login es exitoso, pasamos los datos al componente padre (App.jsx)
       onLoginSuccess(userData);
     } catch (err) {
       setError(err.message);
@@ -33,7 +31,6 @@ export default function LoginForm({ onLoginSuccess }) {
 
   return (
     <div className="login-form-container">
-      {/* Icono de usuario simulado */}
       <div className="user-icon-wrapper">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="user-icon">
           <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>

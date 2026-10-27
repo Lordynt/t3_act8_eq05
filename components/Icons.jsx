@@ -1,4 +1,3 @@
-// Iconos SVG en línea (estilo línea, heredan el color del texto con currentColor)
 function Svg({ size = 20, children, ...props }) {
   return (
     <svg
@@ -87,6 +86,7 @@ export const FilterIcon = (props) => (
     <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
   </Svg>
 );
+
 export const HistoryIcon = (props) => (
   <Svg {...props}>
     <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />

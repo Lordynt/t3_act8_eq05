@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 export const LIMIT_OPTIONS = [10, 20, 40, 50];
 const DEFAULT_LIMIT = 10;
 
-// Lee ?page=2&limit=20&search=...&category=... de la URL
 const readQueryFromUrl = () => {
   const params = new URLSearchParams(window.location.search);
   const page = parseInt(params.get('page'), 10);
@@ -26,17 +25,14 @@ const buildUrl = (query) => {
   return `${window.location.pathname}?${params.toString()}`;
 };
 
-// Mantiene sincronizados el estado de la tabla y la URL del navegador
 export default function useProductsQuery() {
   const [query, setQuery] = useState(readQueryFromUrl);
 
-  // Al entrar, normaliza la URL (por ejemplo agrega ?page=1&limit=10)
   useEffect(() => {
     window.history.replaceState(null, '', buildUrl(query));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Botón "atrás" / "adelante" del navegador
   useEffect(() => {
     const handlePopState = () => setQuery(readQueryFromUrl());
     window.addEventListener('popstate', handlePopState);

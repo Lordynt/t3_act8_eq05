@@ -8,18 +8,17 @@ export const loginUser = async (username, password) => {
       body: JSON.stringify({
         username,
         password,
-        expiresInMins: 30, // Opcional
+        expiresInMins: 30,
       }),
     });
 
     const data = await response.json();
 
     if (!response.ok) {
-      // DummyJSON devuelve un mensaje de error si las credenciales fallan
       throw new Error(data.message || 'Usuario o contraseña incorrectos');
     }
 
-    return data; // Retorna los datos del usuario (incluye token, image, firstName, etc.)
+    return data;
   } catch (error) {
     throw error;
   }

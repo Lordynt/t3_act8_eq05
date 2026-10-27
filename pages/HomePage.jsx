@@ -1,108 +1,65 @@
-import { useState } from 'react';
+import DepartureCard from '../components/DepartureCard';
 import '../styles/HomePage.css';
 
-// Datos simulados (como en el mockup de Figma)
-const NEXT_FLIGHT = {
-  route: 'Ciudad de México (MEX) → Londres (LHR)',
-  date: '15 de Noviembre, 2026',
-  time: '19:30 PM → 13:45 PM (+1)',
-  flightNumber: 'BA 232',
-  seat: 'A12',
-  travelClass: 'Turista Premium',
-  price: '$1,250.00 USD',
-  status: 'Pagado',
-  image: 'londres.jpg',
-};
-
-const SUGGESTED_TRIPS = [
+const DEPARTURES = [
   {
     id: 1,
-    title: 'Europa - Duomo de Milán',
-    date: '05 de Mayo, 2026',
-    origin: 'Bogotá (BOG)',
-    destination: 'Milán (MXP)',
-    price: '$900.00 USD',
-    image: 'milan.jpg',
+    route: 'Ciudad de México (MEX) → Puebla (PBC)',
+    time: '19:30',
+    urbanNumber: 'Urban #207',
+    driver: 'Alfonso Torres',
+    gate: 'Terminal 2 - Andén 4',
+    status: 'A Tiempo',
+    seats: [
+      { id: 1, occupied: false }, { id: 2, occupied: false }, { id: 3, occupied: false }, { id: 4, occupied: true }, 
+      { id: 5, occupied: true },  { id: 6, occupied: false }, { id: 7, occupied: false }, { id: 8, occupied: false },
+      { id: 9, occupied: false }, { id: 10, occupied: true }, { id: 11, occupied: false }, { id: 12, occupied: false },
+      { id: 13, occupied: false }, { id: 14, occupied: false }, { id: 15, occupied: true }, { id: 16, occupied: false },
+    ]
   },
   {
     id: 2,
-    title: 'Corea del Sur - Palacio Gyeongbokgung',
-    date: '15 de Octubre, 2026',
-    origin: 'Ciudad de México (MEX)',
-    destination: 'Seúl (ICN)',
-    price: '$1,450.00 USD',
-    image: 'seul.jpg',
+    route: 'Guadalajara (GDL) → Monterrey (MTY)',
+    time: '21:15',
+    urbanNumber: 'Urban #305',
+    driver: 'María López',
+    gate: 'Terminal 1 - Andén 2',
+    status: 'A Tiempo',
+    seats: [
+      { id: 1, occupied: true }, { id: 2, occupied: true }, { id: 3, occupied: false }, { id: 4, occupied: false }, 
+      { id: 5, occupied: false }, { id: 6, occupied: true }, { id: 7, occupied: true }, { id: 8, occupied: true },
+      { id: 9, occupied: false }, { id: 10, occupied: false }, { id: 11, occupied: false }, { id: 12, occupied: false },
+      { id: 13, occupied: true }, { id: 14, occupied: true }, { id: 15, occupied: true }, { id: 16, occupied: true },
+    ]
   },
+  {
+    id: 3,
+    route: 'Querétaro (QRO) → CDMX (MEX)',
+    time: '08:00',
+    urbanNumber: 'Urban #112',
+    driver: 'Carlos Ruiz',
+    gate: 'Terminal 3 - Andén 8',
+    status: 'Retrasado',
+    seats: [
+      { id: 1, occupied: false }, { id: 2, occupied: false }, { id: 3, occupied: false }, { id: 4, occupied: false }, 
+      { id: 5, occupied: false }, { id: 6, occupied: false }, { id: 7, occupied: false }, { id: 8, occupied: false },
+      { id: 9, occupied: true }, { id: 10, occupied: true }, { id: 11, occupied: true }, { id: 12, occupied: true },
+      { id: 13, occupied: false }, { id: 14, occupied: false }, { id: 15, occupied: false }, { id: 16, occupied: true },
+    ]
+  }
 ];
-
-// Imagen desde public/flights/. Si no existe el archivo, muestra un fondo de color.
-function TripImage({ file, alt }) {
-  const [hasFailed, setHasFailed] = useState(false);
-
-  return (
-    <div className="trip-image">
-      {hasFailed ? (
-        <span className="trip-image-placeholder">✈</span>
-      ) : (
-        <img
-          src={`${import.meta.env.BASE_URL}flights/${file}`}
-          alt={alt}
-          onError={() => setHasFailed(true)}
-        />
-      )}
-    </div>
-  );
-}
 
 export default function HomePage({ user }) {
   return (
     <div className="home-page">
-      <section className="welcome-card">
+      <div style={{ marginBottom: '0.5rem' }}>
         <p className="welcome-text">Bienvenido {user.firstName}</p>
-        <h2 className="section-title">Próximo Vuelo</h2>
+        <h2 className="section-title">Salidas Disponibles</h2>
+      </div>
 
-        <article className="flight-card">
-          <div className="flight-info">
-            <h3 className="flight-route">{NEXT_FLIGHT.route}</h3>
-            <div className="flight-details">
-              <p>Fecha: {NEXT_FLIGHT.date}</p>
-              <p>Pasajero: {user.firstName} {user.lastName}</p>
-              <p>Hora: {NEXT_FLIGHT.time}</p>
-              <p>Asiento: {NEXT_FLIGHT.seat}</p>
-              <p>Número de Vuelo: {NEXT_FLIGHT.flightNumber}</p>
-              <p>Clase: {NEXT_FLIGHT.travelClass}</p>
-            </div>
-          </div>
-
-          <div className="flight-side">
-            <span className="flight-price">{NEXT_FLIGHT.price}</span>
-            <span className="status-badge">{NEXT_FLIGHT.status}</span>
-          </div>
-
-          <TripImage file={NEXT_FLIGHT.image} alt="Destino del próximo vuelo" />
-        </article>
-      </section>
-
-      <section>
-        <h2 className="section-title">Podría Interesarte</h2>
-
-        <div className="suggestions-grid">
-          {SUGGESTED_TRIPS.map((trip) => (
-            <article key={trip.id} className="suggestion-card">
-              <TripImage file={trip.image} alt={trip.title} />
-              <div>
-                <h3 className="suggestion-title">{trip.title}</h3>
-                <ul className="suggestion-details">
-                  <li>Fecha: {trip.date}</li>
-                  <li>Lugar Origen: {trip.origin}</li>
-                  <li>Lugar Destino: {trip.destination}</li>
-                  <li>Precio: {trip.price}</li>
-                </ul>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
+      {DEPARTURES.map((departure) => (
+        <DepartureCard key={departure.id} departure={departure} />
+      ))}
     </div>
   );
 }

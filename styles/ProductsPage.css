@@ -2,7 +2,6 @@
   padding: 1.25rem;
 }
 
-/* Barra de búsqueda + filtro */
 .table-toolbar {
   display: flex;
   align-items: center;
@@ -70,7 +69,6 @@
   border-color: var(--color-primary);
 }
 
-/* Tabla: encabezado azul como en el mockup */
 .table-wrapper {
   overflow-x: auto;
 }
@@ -118,7 +116,6 @@
 .status-low { color: #b45309; }
 .status-out { color: #b91c1c; }
 
-/* Pie de la tabla: "Mostrar X registros" + paginación */
 .table-footer {
   display: flex;
   align-items: center;

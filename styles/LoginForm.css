@@ -110,7 +110,7 @@
 }
 
 .forgot-password-btn {
-  background-color: var(--color-orange); /* #CC7215 */
+  background-color: var(--color-orange); 
   color: white;
   border: none;
   padding: 10px 24px;

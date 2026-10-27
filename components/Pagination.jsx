@@ -1,6 +1,5 @@
 import '../styles/Pagination.css';
 
-// Devuelve algo como [1, '...', 4, 5, 6, '...', 20]
 const getPageNumbers = (currentPage, totalPages) => {
   if (totalPages <= 5) {
     return Array.from({ length: totalPages }, (_, index) => index + 1);
