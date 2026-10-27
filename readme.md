@@ -37,13 +37,13 @@ Usuario de prueba para entrar:
 ## Capturas
 
 ### Login
-![Pantalla de Login](/img1.jpeg)
+![Pantalla de Login](public/img1.jpeg)
 
 ### Pantalla de Inicio
-![Pantalla de Inicio](/img2.jpeg)
+![Pantalla de Inicio](public/img2.jpeg)
 
 ### Pantalla con Tabla de Usuarios
-![Pantalla con Tabla](/img3.jpeg)
+![Pantalla con Tabla](public/img3.jpeg)
 
 ### Pantalla Adicional
-![Pantalla Adicional](/img4.jpeg)
+![Pantalla Adicional](public/img4.jpeg)
