@@ -6,7 +6,7 @@ export default function LoginPage({ onLoginSuccess }) {
     <div className="login-page">
       <div className="login-image-side">
         <img 
-          src={`${import.meta.env.BASE_URL}urban.jpeg`} 
+          src={`${import.meta.env.BASE_URL}urban.png`} 
           alt="Avión volando sobre la ciudad al atardecer" 
         />
       </div>
