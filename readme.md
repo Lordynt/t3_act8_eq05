@@ -33,3 +33,17 @@ Usuario de prueba para entrar:
 - Vite
 - API de DummyJSON
 - Despliegue con Nginx en un VPS
+
+## Capturas
+
+### Login
+![Pantalla de Login](/img1.jpeg)
+
+### Pantalla de Inicio
+![Pantalla de Inicio](/img2.jpeg)
+
+### Pantalla con Tabla de Usuarios
+![Pantalla con Tabla](/img3.jpeg)
+
+### Pantalla Adicional
+![Pantalla Adicional](/img4.jpeg)
