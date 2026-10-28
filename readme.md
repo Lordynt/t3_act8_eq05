@@ -19,7 +19,7 @@ Fase 3 (Tabla de datos):
 
 ## Proyecto desplegado
 
-http://t3-act8-eq05.eastus.cloudapp.azure.com/t3_act8_eq05/
+https://t3act8eq05.eastus.cloudapp.azure.com/t3_act8_eq05/
 
 en algunos navegadores aveces es forzado a usar el http"S" es necesario quitar la S
 Usuario de prueba para entrar:
